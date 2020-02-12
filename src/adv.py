@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -49,3 +50,10 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# Create player
+# Let play input their name
+# Create basic REPL loop
+# Read command
+# Check if it's n/s/e/w/q
+# If so, execute the proper command
