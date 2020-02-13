@@ -3,8 +3,9 @@
 
 
 class Player:
-    # Init player with name
+    def __init__(self, name, current_room):
+        self.name = name
+        self.current_room = current_room
 
-        # Player also has attribute current_room
-
-        # Player should be able to move in a direction
+    def player_move(self, name, current_room):
+        return f"{self.name} now moves to {self.current_room}"

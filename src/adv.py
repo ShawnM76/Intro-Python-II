@@ -22,7 +22,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -52,8 +51,42 @@ room['treasure'].s_to = room['narrow']
 # If the user enters "q", quit the game.
 
 # Create player
-# Let play input their name
-# Create basic REPL loop
-# Read command
-# Check if it's n/s/e/w/q
-# If so, execute the proper command
+player_name = input("Whats your name?: ")
+
+player = Player(player_name, room['outside'])  # keep track of player room
+
+# user = input(
+#     f"{player_name} welcome to the Adventure Game! Press any key to continue!: ")
+# print(user)
+
+while True:
+    print(f"{player_name}\n\n {player.current_room}\n")
+    user_choice = input(
+        f"{player_name} where would you like to go next? North(n),South(s),East(e), West(w) or (q) to Quit: ").lower()
+    if user_choice in ["n", "s", "e", "w"]:
+        print("You move " + user_choice)
+        if user_choice == "n":
+            if player.current_room.n_to != None:
+                player.current_room = player.current_room.n_to
+            else:
+                print("You hit a wall and notice you can't go that way!")
+        if user_choice == "s":
+            if player.current_room.s_to != None:
+                player.current_room = player.current_room.s_to
+            else:
+                print("You hit a wall and notice you can't go that way!")
+        if user_choice == "e":
+            if player.current_room.e_to != None:
+                player.current_room = player.current_room.e_to
+            else:
+                print("You hit a wall and notice you can't go that way!")
+        if user_choice == "w":
+            if player.current_room.w_to != None:
+                player.current_room = player.current_room.w_to
+            else:
+                print("You hit a wall and notice you can't go that way!")
+    elif user_choice == "q":
+        print("Goodbye and thanks for playing!")
+        quit()
+    else:
+        print("That isn't a reconized command")
